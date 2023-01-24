@@ -1,14 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
 import './index.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Layout from './components/Layout'
+import Index, { loader as LoadProducts } from './pages/Index'
+
 
 const router = createBrowserRouter([
   {
     path: '/',
-    index: true,
-    element: <p>melo</p>
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Index />,
+        loader: LoadProducts,
+      }
+    ]
   }
 ]) 
 
